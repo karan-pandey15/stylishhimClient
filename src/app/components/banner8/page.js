@@ -1,8 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import "./Banner8.css";
-import BannerSevenButton from "../cartbutton/page";
-import ButtonText from "../button/page";
+import BannerSevenButton from "../cartbutton/page"; 
 import CartPage from "../cart/page";
 import EightBannerSidecart from "../bannersidecartbutton/page";
 
@@ -15,8 +14,7 @@ const EightBanner = () => {
           <p className="banner_para">
             Vivulum ut tempor sem leo, a ultricies quam aliquam eget.
           </p>
-          <h1 className="banner_second_heading">STYLISHHIM</h1>
-          <ButtonText buttonText="VIEW ALL" />
+          <h1 className="banner_second_heading">STYLISHHIM</h1> 
 
           <p className="banner_second_para">
             Valid till 23rd March, 10am | Online exclusive

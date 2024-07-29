@@ -8,9 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "./Carousel.css";
 import { Pagination, Autoplay } from "swiper/modules";
-import Image from "next/image";
-import ButtonText from "../button/page";
-
+import Image from "next/image"; 
 export default function Carousel() {
   return (
     <>
@@ -41,9 +39,7 @@ export default function Carousel() {
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
                 nisi ut aliquip ex ea commodo consequat.
               </p>
-              <div className="pt-4">
-                <ButtonText buttonText="SHOP NOW" />
-              </div>
+               
             </div>
           </div>
         </SwiperSlide>
@@ -63,9 +59,7 @@ export default function Carousel() {
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
                 nisi ut aliquip ex ea commodo consequat.
               </p>
-              <div className="pt-4">
-                <ButtonText buttonText="SHOP NOW" />
-              </div>
+           
             </div>
           </div>
         </SwiperSlide>
@@ -85,9 +79,7 @@ export default function Carousel() {
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
                 nisi ut aliquip ex ea commodo consequat.
               </p>
-              <div className="pt-4">
-                <ButtonText buttonText="SHOP NOW" />
-              </div>
+           
             </div>
           </div>
         </SwiperSlide>
