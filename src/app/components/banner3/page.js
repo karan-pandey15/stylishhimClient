@@ -6,8 +6,8 @@ import { GrTest } from "react-icons/gr";
 import { IoLeafOutline } from "react-icons/io5";
 import { FaGlobeAfrica } from "react-icons/fa";
 import { LuVegan } from "react-icons/lu";
-import { IoCallOutline } from "react-icons/io5";
-import Button from "../button/page";
+import { IoCallOutline } from "react-icons/io5"; 
+import ButtonText from "../button/page";
 
 const ThirdBanner = () => {
   return (
@@ -61,7 +61,7 @@ const ThirdBanner = () => {
             </div>
             <div className="flex items-center third_banner_display2">
               <div className="py-5 pr-8">
-                <Button buttonText="SHOP STYLISHHIM" />
+                <ButtonText buttonText="SHOP STYLISHHIM" />
               </div>
               <div className="flex items-center py-5">
                 <span className="w-[50px] h-[50px] border-[1px] border-black rounded-full flex items-center justify-center mr-3 text-xl font-bold third_banner_phoneicon">

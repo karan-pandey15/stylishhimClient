@@ -1,11 +1,11 @@
 import React from "react";
 import "./Button.css";
 
-export const Button = ({ buttonText }) => {
+const ButtonText = ({ buttonText }) => {
   return <button className={`button`}>{buttonText}</button>;
 };
 
- 
+export default ButtonText;
 
 
 
