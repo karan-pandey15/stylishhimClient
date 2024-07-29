@@ -26,14 +26,13 @@ const CartPage = () => {
         if (res.data.Status === "Success") {
           setAuth(true);
         } else {
-          // setAuth(false);
-          console.log("some error occurs")
-          // router.push("/pages/signin");
+          setAuth(false);
+          router.push("/pages/signin");
         }
       })
       .catch((err) => {
         console.log(err);
-        // router.push("/pages/signin");
+        router.push("/pages/signin");
       });
   }, [router]);
 
