@@ -239,12 +239,19 @@ const Footer = () => {
                     </Link>
 
                     
-                    <Link href='/pages/contactus' >
-                    <div className="small_container" >
-                         <FaWhatsapp />
-                         <p  className="small_footer_para" >Chat</p>
-                    </div>
-                    </Link>
+               
+
+
+                    <Link
+            href="https://wa.me/8887796224"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="small_container">
+              <FaWhatsapp />
+              <p className="small_footer_para">Chat</p>
+            </div>
+          </Link>
                 </div>
             </div>
         </div>
