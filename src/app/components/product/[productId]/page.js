@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { add } from '@/Redux/Cartslice'; 
 import { toast } from 'react-toastify';
 
-const ProductsApi = "http://192.168.1.5:5010/api/products";
+const ProductsApi = "https://api.stylishhim.com/api/products";
 
 export default function ProductDetails() {
   const router = usePathname();
