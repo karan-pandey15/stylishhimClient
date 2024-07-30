@@ -11,7 +11,7 @@ import { add } from '@/Redux/Cartslice';
 
 import { toast } from 'react-toastify';
 // Update this URL to your actual backend API endpoint
-const ProductsApi = "https://api.stylishhim.com/api/products";
+const ProductsApi = "http://localhost:5010/api/products";
 
 export default function AllProduct() {
   const [products, setProducts] = useState([]);

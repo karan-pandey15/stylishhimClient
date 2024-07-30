@@ -1,5 +1,6 @@
   
-import Banner1 from "./components/homepage/page";
+// import Banner1 from "./components/homepage/page";
+import Carousel from "./components/carousel/page";
 import Footer from "./components/footer/page"; 
 import Navbar from "./components/navbar/page";    
 import ThirdBanner from "./components/banner3/page";
@@ -20,7 +21,7 @@ export default function Home() {
         <Navbar />
       </div> 
       <div>
-      <Banner1 /> 
+      <Carousel /> 
       </div>  
       
     <SecondBanner />

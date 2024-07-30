@@ -63,7 +63,7 @@ const OrdersReceived = () => {
           >
             <Link
               style={{ fontWeight: "bolder" }}
-            href="https://wa.me/8887796224"
+            href="https://wa.me/+918887796224"
               className="button"
             >
               GetDetails
