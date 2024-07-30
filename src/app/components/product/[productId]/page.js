@@ -16,8 +16,8 @@
 // StarIcon
 // import StarIcon from "react-icons/ci";
 
-// const ProductsApi = "http://localhost:5010/api/products";
-// const ReviewsApi = "http://localhost:5010/api/reviews";
+// const ProductsApi = "https://api.stylishhim.com/api/products";
+// const ReviewsApi = "https://api.stylishhim.com/api/reviews";
 
 // export default function ProductDetails() {
 //   const router = usePathname();
@@ -266,8 +266,8 @@ import Navbar from '@/app/components/navbar/page';
 import Footer from '@/app/components/footer/page';
 import './product.css';
 
-const ProductsApi = "http://localhost:5010/api/products";
-const ReviewsApi = "http://localhost:5010/api/reviews";
+const ProductsApi = "https://api.stylishhim.com/api/products";
+const ReviewsApi = "https://api.stylishhim.com/api/reviews";
 
 export default function ProductDetails() {
   const router = usePathname();
