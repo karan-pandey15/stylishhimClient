@@ -13,12 +13,14 @@ import Navbar from "@/app/components/navbar/page";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation"; 
+
 const CartPage = () => {
   const [auth, setAuth] = useState();
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const router = useRouter();
   const [paymentMethod, setPaymentMethod] = useState('');
+
   useEffect(() => {
     axios
       .get("https://api.stylishhim.com/api/user-data")
@@ -33,7 +35,6 @@ const CartPage = () => {
       })
       .catch((err) => {
         console.log(err);
-
         // router.push("/pages/signin");
       });
   }, [router]);
@@ -54,6 +55,10 @@ const CartPage = () => {
     (total, item) => total + item.price * item.quantity,
     0
   );
+
+  const gstPercentage = 18;
+  const gstAmount = (totalPrice * gstPercentage) / 100;
+  const totalPriceWithGST = totalPrice + gstAmount;
 
   const loadRazorpayScript = () => {
     return new Promise((resolve) => {
@@ -99,7 +104,7 @@ const CartPage = () => {
 
       const options = {
         key: "rzp_live_5PPrr1z0Y5RqDP", // Replace with your Razorpay key
-        amount: totalPrice * 100,
+        amount: totalPriceWithGST * 100,
         currency: "INR",
         name: "Keeva",
         description: "visit Again",
@@ -183,7 +188,6 @@ const CartPage = () => {
     }
   };
 
-  
   const paylaterCheckout = async () => {
     try {
       const user = JSON.parse(localStorage.getItem("user"));
@@ -199,7 +203,7 @@ const CartPage = () => {
       });
       const data = await response.json();
       console.log(data);
-      toast("Order Placed SuccessFully!", {
+      toast("Order Placed Successfully!", {
         position: "bottom-center",
         autoClose: 1000, // 1 second
         hideProgressBar: true,
@@ -234,7 +238,7 @@ const CartPage = () => {
           <h2>Your cart is empty.</h2>
           <Link href="/">
             <button className="bg-blue-500 text-white py-1 mx-4 px-3 rounded-md mt-2 hover:bg-red-600 duration-300">
-              GoTo Shop
+              Go To Shop
             </button>
           </Link>
         </div>
@@ -242,8 +246,6 @@ const CartPage = () => {
       </>
     );
   }
-
-
 
   return (
     <>
@@ -256,18 +258,17 @@ const CartPage = () => {
               key={product._id}
               className="flex flex-col sm:flex-row justify-between items-center py-4 border-b border-gray-200"
             >
-               <Link href={`/components/product/${product._id}`}> 
-              <div className="image-container">
-                <Image
-                  src={product.images[0]} // Assuming the first image is used
-                  alt={product.name}
-                  width={200}
-                  height={200}
-                  className="product-image"
-                />
-              </div>
+              <Link href={`/components/product/${product._id}`}> 
+                <div className="image-container">
+                  <Image
+                    src={product.images[0]} // Assuming the first image is used
+                    alt={product.name}
+                    width={200}
+                    height={200}
+                    className="product-image"
+                  />
+                </div>
               </Link>
-            
               <div className="flex-1 px-4 text-container">
                 <h2 className="text-xl font-medium">{product.name}</h2>
                 <p className="text-gray-600">Description: {product.description}</p>
@@ -286,55 +287,60 @@ const CartPage = () => {
             </div>
           ))}
           <div className="flex flex-col sm:flex-row justify-between items-center py-4 mt-4 border-t border-gray-200 total-container">
-            <h2 className="text-2xl font-medium">Total Price: ₹{totalPrice}</h2>
+            <h2 className="text-2xl font-medium">
+              Total Price (excluding GST): ₹{totalPrice.toFixed(2)}
+            </h2>
+            <h2 className="text-2xl font-medium">
+              GST (18%): ₹{gstAmount.toFixed(2)}
+            </h2>
+            <h2 className="text-2xl font-medium">
+              Total Price (including GST): ₹{totalPriceWithGST.toFixed(2)}
+            </h2>
 
             <div>
-      <h2 style={{fontWeight:'bold',margin:'10px'}} >Choose payment method and checkout</h2>
-      <div 
-         style={{display:'flex',justifyContent:'space-around'}}
-      >
-        <label>
-          <input
-            type="radio"
-            name="payment"
-            value="payOnDelivery"
-            checked={paymentMethod === 'payOnDelivery'}
-            onChange={() => setPaymentMethod('payOnDelivery')}
-          />
-          Pay on Delivery
-        </label>
-        <label style={{ marginLeft: '10px' }}>
-          <input
-            type="radio"
-            name="payment"
-            value="payNow"
-            checked={paymentMethod === 'payNow'}
-            onChange={() => setPaymentMethod('payNow')}
-          
-          />
-          Pay Now
-        </label>
-      </div>
-      <div style={{ marginTop: '20px' }}>
-        {paymentMethod === 'payOnDelivery' ? (
-          <button
-            className="bg-green-500 text-white py-2 px-6 rounded-md hover:bg-green-600 duration-300"
-            onClick={paylaterCheckout}
-            style={{background:'#38b000',fontWeight:'bold'}}
-          >
-            Checkout
-          </button>
-        ) : paymentMethod === 'payNow' ? (
-          <button
-            className="bg-green-500 text-white py-2 px-6 rounded-md hover:bg-green-600 duration-300"
-            onClick={checkout}
-            style={{background:'#38b000',fontWeight:'bold'}}
-          >
-            Pay Now
-          </button>
-        ) : null}
-      </div>
-    </div> 
+              <h2 style={{fontWeight:'bold',margin:'10px'}}>Choose payment method and checkout</h2>
+              <div style={{display:'flex',justifyContent:'space-around'}}>
+                <label>
+                  <input
+                    type="radio"
+                    name="payment"
+                    value="payOnDelivery"
+                    checked={paymentMethod === 'payOnDelivery'}
+                    onChange={() => setPaymentMethod('payOnDelivery')}
+                  />
+                  Pay on Delivery
+                </label>
+                <label style={{ marginLeft: '10px' }}>
+                  <input
+                    type="radio"
+                    name="payment"
+                    value="payNow"
+                    checked={paymentMethod === 'payNow'}
+                    onChange={() => setPaymentMethod('payNow')}
+                  />
+                  Pay Now
+                </label>
+              </div>
+              <div style={{ marginTop: '20px' }}>
+                {paymentMethod === 'payOnDelivery' ? (
+                  <button
+                    className="bg-green-500 text-white py-2 px-6 rounded-md hover:bg-green-600 duration-300"
+                    onClick={paylaterCheckout}
+                    style={{background:'#38b000',fontWeight:'bold'}}
+                  >
+                    Checkout
+                  </button>
+                ) : paymentMethod === 'payNow' ? (
+                  <button
+                    className="bg-green-500 text-white py-2 px-6 rounded-md hover:bg-green-600 duration-300"
+                    onClick={checkout}
+                    style={{background:'#38b000',fontWeight:'bold'}}
+                  >
+                    Pay Now
+                  </button>
+                ) : null}
+              </div>
+            </div> 
           </div>
         </div>
       </div>

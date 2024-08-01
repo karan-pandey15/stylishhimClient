@@ -311,7 +311,7 @@ const Navbar = () => {
 
 
             <li className="py-2">
-              <Link href="/pages/termscond" className="mx-5">
+              <Link href="/pages/privacypage" className="mx-5">
                 Privacy Policy
               </Link>
             </li> 

@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
       <Navbar />
       <div className="privacyContainer">
         <h1 className="privacyHeading">Privacy Policy</h1>
-        <p className="privacyText">Effective Date: 27/07/2024</p>
+        <p className="privacyText">Effective Date: 31/07/2024</p>
 
         <h2 className="privacySubheading">Introduction</h2>
         <p className="privacyText">

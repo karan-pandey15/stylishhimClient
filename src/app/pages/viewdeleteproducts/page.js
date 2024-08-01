@@ -70,15 +70,7 @@ export default function ViewadelAllProduct() {
   return (
     <div> 
        <Navbar />
-       <div className="input_container">
-        <input
-          className="input_style"
-          type="search"
-          placeholder="Search Products..."
-          value={searchItem}
-          onChange={(e) => setSearchItem(e.target.value)}
-        />
-      </div>
+   
       <div className="product_list">
         {filteredProducts.map((product) => (
           <div className="product_card" key={product._id}>
